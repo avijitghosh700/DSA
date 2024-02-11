@@ -34,9 +34,13 @@ class Stack {
   }
 }
 
-const stack = new Stack(3);
+const stack = new Stack(5);
 
 console.log(stack.push(12));
 console.log(stack.push(11));
-// console.log(stack.push(1));
-console.log(stack.isFull());
+console.log(stack.push(100));
+console.log(stack.push(1));
+console.log(stack.push(123));
+console.log(stack.push(1));
+console.log(stack.pop());
+console.log(stack.peek());
