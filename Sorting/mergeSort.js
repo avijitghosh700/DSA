@@ -98,7 +98,7 @@ const merge = (arr, l, m, r) => {
     arr[i] = temp[i - l];
   }
 
-  // Cheking whether the start and end index covers the full array length and returning the sorted array.
+  // Checking whether the start and end index covers the full array length and returning the sorted array.
   if (l === 0 && r === arr.length - 1) return arr;
 };
 
