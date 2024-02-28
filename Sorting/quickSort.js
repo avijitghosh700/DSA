@@ -26,24 +26,32 @@ function swap(arr, i, j) {
  * @return {number} The index of the pivot after partitioning.
  */
 function partition(arr, low, high) {
-  let pivot = arr[high]; // Using the last element as the pivot
-  let i = low - 1; // Tracks the last index of the smaller element
+  // Select the pivot as the last element in the array
+  let pivot = arr[high];
+  let i = low - 1; // Index of the smaller element
 
-  // Iterate through the array, excluding the pivot
+  // Traverse the array from low to high (excluding pivot)
   for (let j = low; j < high; j++) {
-    // If current element is smaller than the pivot, it's placed on the left side
+    // If the current element is smaller than the pivot
     if (arr[j] < pivot) {
-      i++; // Move the boundary of smaller elements one step ahead
-      swap(arr, i, j); // Swap the current element with the element at the new boundary
+      // Increment the index of the smaller element
+      i++;
+      // Swap the current element with the element at the smaller index
+      swap(arr, i, j);
     }
   }
 
-  // After the loop, swap the pivot with the element just after the last smaller element
+  // Swap the pivot element with the element at the smaller index
   swap(arr, i + 1, high);
 
-  // Return the final position of the pivot, now all elements left of it are smaller,
-  // and all elements right of it are greater or equal
-  return i + 1;
+  // Return the index of the pivot
+  return i + 1; // The pivot's final position is i + 1 (since i starts at -1)
+  // console.log(arr);
+  // console.log(i + 1);
+  // console.log("--------------");
+  // console.log(arr);
+  // console.log(i + 1);
+  // console.log("--------------
 }
 
 /**
