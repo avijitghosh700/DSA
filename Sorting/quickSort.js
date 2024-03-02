@@ -1,3 +1,13 @@
+const arrInput = [
+  523, 234, 111, 562, 897, 341, 256, 431, 92, 345, 678, 789, 12, 457, 368, 129, 746, 985, 204, 673,
+  442, 555, 234, 978, 659, 321, 875, 233, 556, 123, 490, 367, 456, 789, 210, 654, 321, 902, 438,
+  657, 234, 789, 123, 456, 789, 101, 202, 303, 404, 505, 111, 222, 333, 444, 555, 666, 777, 888,
+  999, 1010, 121, 232, 343, 454, 565, 676, 787, 898, 909, 2020, 212, 323, 434, 545, 656, 767, 878,
+  989, 1011, 1112, 122, 233, 344, 455, 566, 677, 788, 899, 900, 1001, 102, 203, 304, 405, 506, 607,
+  708, 809, 910, 1011,
+];
+// [2, 1, 4, 19, 29, 10, 21, 3, 9];
+
 /**
  * Swaps two elements in an array.
  * This utility function is used to modify the array in place by swapping
@@ -26,32 +36,22 @@ function swap(arr, i, j) {
  * @return {number} The index of the pivot after partitioning.
  */
 function partition(arr, low, high) {
-  // Select the pivot as the last element in the array
-  let pivot = arr[high];
-  let i = low - 1; // Index of the smaller element
+  const pivot = arr[low];
+  let i = low;
+  let j = high;
 
-  // Traverse the array from low to high (excluding pivot)
-  for (let j = low; j < high; j++) {
-    // If the current element is smaller than the pivot
-    if (arr[j] < pivot) {
-      // Increment the index of the smaller element
+  while (i < j) {
+    while (arr[i] <= pivot && i <= high - 1) {
       i++;
-      // Swap the current element with the element at the smaller index
-      swap(arr, i, j);
     }
+
+    while (arr[j] > pivot && j >= low + 1) {
+      j--;
+    }
+    if (i < j) swap(arr, i, j);
   }
-
-  // Swap the pivot element with the element at the smaller index
-  swap(arr, i + 1, high);
-
-  // Return the index of the pivot
-  return i + 1; // The pivot's final position is i + 1 (since i starts at -1)
-  // console.log(arr);
-  // console.log(i + 1);
-  // console.log("--------------");
-  // console.log(arr);
-  // console.log(i + 1);
-  // console.log("--------------
+  swap(arr, low, j);
+  return j;
 }
 
 /**
@@ -79,19 +79,6 @@ function quickSort(arr, low, high) {
 }
 
 // Example usage
-// console.log(quickSort([2, 1, 4, 19, 29, 10, 21, 3, 9], 0, 8));
+// console.log(quickSort(arrInput, 0, 8));
 
-console.log(
-  quickSort(
-    [
-      523, 234, 111, 562, 897, 341, 256, 431, 92, 345, 678, 789, 12, 457, 368, 129, 746, 985, 204,
-      673, 442, 555, 234, 978, 659, 321, 875, 233, 556, 123, 490, 367, 456, 789, 210, 654, 321, 902,
-      438, 657, 234, 789, 123, 456, 789, 101, 202, 303, 404, 505, 111, 222, 333, 444, 555, 666, 777,
-      888, 999, 1010, 121, 232, 343, 454, 565, 676, 787, 898, 909, 2020, 212, 323, 434, 545, 656,
-      767, 878, 989, 1011, 1112, 122, 233, 344, 455, 566, 677, 788, 899, 900, 1001, 102, 203, 304,
-      405, 506, 607, 708, 809, 910, 1011,
-    ],
-    0,
-    99
-  )
-);
+console.log(quickSort(arrInput, 0, 99));
