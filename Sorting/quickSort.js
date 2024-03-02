@@ -1,12 +1,12 @@
-const arrInput = [
-  523, 234, 111, 562, 897, 341, 256, 431, 92, 345, 678, 789, 12, 457, 368, 129, 746, 985, 204, 673,
-  442, 555, 234, 978, 659, 321, 875, 233, 556, 123, 490, 367, 456, 789, 210, 654, 321, 902, 438,
-  657, 234, 789, 123, 456, 789, 101, 202, 303, 404, 505, 111, 222, 333, 444, 555, 666, 777, 888,
-  999, 1010, 121, 232, 343, 454, 565, 676, 787, 898, 909, 2020, 212, 323, 434, 545, 656, 767, 878,
-  989, 1011, 1112, 122, 233, 344, 455, 566, 677, 788, 899, 900, 1001, 102, 203, 304, 405, 506, 607,
-  708, 809, 910, 1011,
-];
-// [2, 1, 4, 19, 29, 10, 21, 3, 9];
+const arrInput = [2, 1, 4, 19, 29, 10, 21, 3, 9];
+// [
+//   523, 234, 111, 562, 897, 341, 256, 431, 92, 345, 678, 789, 12, 457, 368, 129, 746, 985, 204, 673,
+//   442, 555, 234, 978, 659, 321, 875, 233, 556, 123, 490, 367, 456, 789, 210, 654, 321, 902, 438,
+//   657, 234, 789, 123, 456, 789, 101, 202, 303, 404, 505, 111, 222, 333, 444, 555, 666, 777, 888,
+//   999, 1010, 121, 232, 343, 454, 565, 676, 787, 898, 909, 2020, 212, 323, 434, 545, 656, 767, 878,
+//   989, 1011, 1112, 122, 233, 344, 455, 566, 677, 788, 899, 900, 1001, 102, 203, 304, 405, 506, 607,
+//   708, 809, 910, 1011,
+// ];
 
 /**
  * Swaps two elements in an array.
@@ -43,10 +43,12 @@ function partition(arr, low, high) {
   while (i < j) {
     while (arr[i] <= pivot && i <= high - 1) {
       i++;
+      console.log(i, `i --> [${arr}], ${pivot}`);
     }
 
     while (arr[j] > pivot && j >= low + 1) {
       j--;
+      console.log(j, `j --> [${arr}], ${pivot}`);
     }
     if (i < j) swap(arr, i, j);
   }
@@ -70,6 +72,8 @@ function quickSort(arr, low, high) {
     // Partition the array and get the pivot's final position
     let pi = partition(arr, low, high);
 
+    console.log(pi, low, high, `--> [${arr}]`);
+
     // Recursively apply QuickSort to the sub-array to the left of the pivot
     quickSort(arr, low, pi - 1);
     // Recursively apply QuickSort to the sub-array to the right of the pivot
@@ -79,6 +83,6 @@ function quickSort(arr, low, high) {
 }
 
 // Example usage
-// console.log(quickSort(arrInput, 0, 8));
+console.log(quickSort(arrInput, 0, 8));
 
-console.log(quickSort(arrInput, 0, 99));
+// console.log(quickSort(arrInput, 0, 99));
